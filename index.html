@@ -14,7 +14,7 @@
 
     <script>
         // Fetch the file list from GitHub API
-        fetch('https://api.github.com/repos/JcTrashTypeShi/JcReal-Storage/contents/')
+  fetch('https://api.github.com/repos/JcTrashTypeShi/JcReal-Storage/contents/')
             .then(response => response.json())
             .then(data => {
                 const fileList = document.getElementById('fileList');
@@ -28,18 +28,19 @@
 
                     data.forEach(item => {
                         const itemName = item.name.toLowerCase();
+                         if (item.name === "tuter.htm") return;
 
                         if (item.type === 'file' && itemName.includes(searchTerm)) {
                             const listItem = document.createElement('div');
                             const link = document.createElement('a');
-                            link.href = `./${item.name}`;
+                            link.href = `https://files.jcmainclr.top/${item.name}`;
                             link.textContent = item.name;
                             listItem.appendChild(link);
                             fileList.appendChild(listItem);
                         } else if (item.type === 'dir' && itemName.includes(searchTerm)) {
                             const listItem = document.createElement('div');
                             const link = document.createElement('a');
-                            link.href = `./${item.name}`;
+                            link.href = `https://files.jcmainclr.top/${item.name}`;
                             link.textContent = item.name + '/';
                             listItem.appendChild(link);
                             fileList.appendChild(listItem);
